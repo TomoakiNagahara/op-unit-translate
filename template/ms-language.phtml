@@ -1,0 +1,73 @@
+<?php
+/** op-unit-translate:/ms-language.phtml
+ *
+ * @created    2023-03-26
+ * @version    1.0
+ * @package    op-unit-translate
+ * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+ /** Declare strict
+ *
+ */
+declare(strict_types=1);
+
+/** namespace
+ *
+ */
+namespace OP\UNIT\Translate;
+
+/* @var $args array */
+$json = $args['json'];
+?>
+<section class="translate language list">
+    <ul>
+        <?php foreach($json['translation'] as $code => $lang): ?>
+        <li class="<?= $lang['dir'] ?>" data-lang="<?= $code ?>"><?= $lang['nativeName'] ?></li>
+        <?php endforeach; ?>
+    </ul>
+</section>
+<style>
+section.translate.language.list {
+    border: 1px solid black;
+}
+
+section.translate.language.list ltr {
+    direction: ltr;
+}
+
+section.translate.language.list rtl {
+    direction: rtl;
+}
+
+section.translate.language.list ul {
+    margin:  0;
+    padding: 0;
+}
+
+section.translate.language.list li {
+    margin:  0.25em 0.25em;
+    padding: 0.50em 0.50em 0.25em 0.50em;
+    display: inline-block;
+    cursor:  pointer;
+    border:  1px solid white;
+    border-radius: 0.25em;
+}
+
+section.translate.language.list li:hover {
+    background-color: #b0f0ff;
+    border-color: #90c0ff;
+}
+</style>
+<script>
+document.querySelectorAll('section.translate.language.list li').forEach(function(node){
+    node.addEventListener('click', function(e){
+        let target = e.target;
+        let lang   = target.dataset.lang;
+        console.log( target.innerText, lang );
+    });
+});
+</script>
+<?php
+//D($json);
