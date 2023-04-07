@@ -90,10 +90,12 @@ class Language implements IF_UNIT
             $json = `curl -sS "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"`;
 
             //  ...
-            apcu_store($key, $json);
-
-            //  ...
-            D('fetched');
+            if( $json ){
+                apcu_store($key, $json);
+            }else{
+                $json = ['translation'=>[]];
+                $json = json_encode($json);
+            }
         }
 
         //  ...
