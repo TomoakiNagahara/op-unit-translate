@@ -61,13 +61,25 @@ section.translate.language.list li:hover {
 }
 </style>
 <script>
+(function(){
+//	...
+let item_language_list = "<?php echo OP()->Config('translate')['item_language_list'] ?? 'null'; ?>";
+let item_language_code = "<?php echo OP()->Config('translate')['item_language_code'] ?? 'null'; ?>";
+//	...
 document.querySelectorAll('section.translate.language.list li').forEach(function(node){
     node.addEventListener('click', function(e){
+		//	...
         let target = e.target;
         let lang   = target.dataset.lang;
-        console.log( target.innerText, lang );
+
+		//	...
+		localStorage.setItem(item_language_code, lang);
+
+		//	...
+		location.reload();
     });
 });
+})();
 </script>
 <?php
 //D($json);
