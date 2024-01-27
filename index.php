@@ -22,3 +22,10 @@ namespace OP;
  *
  */
 include(__DIR__.'/Translate.class.php');
+
+/** WebPack
+ *
+ */
+if( OP()->Env()->Mime() === 'text/html' ){
+	OP()->WebPack()->Auto('./webpack/');
+}
