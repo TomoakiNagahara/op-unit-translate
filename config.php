@@ -11,4 +11,6 @@
  */
 //	...
 return [
+	'language_area_id'       => 'op_translate_language_area_id',
+	'language_code_selected' => 'op_translate_language_code_selected',
 ];
