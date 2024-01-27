@@ -1,0 +1,41 @@
+
+/** op-unit-translate:/Translate-Language-Click.css
+ *
+ * @created    2023-03-26
+ * @moved      2024-01-24
+ * @version    1.0
+ * @package    op-unit-translate
+ * @author     Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright  Tomoaki Nagahara All right reserved.
+ */
+
+.translate.language.list {
+    border: 1px solid black;
+}
+
+.translate.language.list ltr {
+    direction: ltr;
+}
+
+.translate.language.list rtl {
+    direction: rtl;
+}
+
+.translate.language.list ul {
+    margin:  0;
+    padding: 0;
+}
+
+.translate.language.list li {
+    margin:  0.25em 0.25em;
+    padding: 0.50em 0.50em 0.25em 0.50em;
+    display: inline-block;
+    cursor:  pointer;
+    border:  1px solid white;
+    border-radius: 0.25em;
+}
+
+.translate.language.list li:hover {
+    background-color: #b0f0ff;
+    border-color: #90c0ff;
+}
