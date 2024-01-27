@@ -99,6 +99,6 @@ class Language implements IF_UNIT
         }
 
         //  ...
-        return json_decode($json, true);
+        return json_decode($json, true)['translation'];
     }
 }
