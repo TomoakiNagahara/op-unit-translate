@@ -60,4 +60,34 @@ class Translate implements IF_UNIT
         //  ...
         return $_TranslateLanguage;
     }
+
+	/** Translate strings.
+	 *
+	 * <pre>
+	 * list($html1, $html2) = OP()->Translate(['<p>Hello, world!</p>','<p>This is test.</p>'], 'ja', 'en');
+	 * </pre>
+	 *
+	 * @created    2024-02-01
+	 * @param      array      $strings
+	 * @param      string     $to_lang
+	 * @param      string     $from_lang
+	 * @return     array
+	 */
+	static function Strings(array $strings, string $to_lang, string $from_lang) : array
+	{
+		//	...
+		foreach( $strings as & $string ){
+			$string = html_entity_decode($string, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401);
+		}
+
+		/* @var $microsoft_translate \OP\UNIT\Microsoft_Translate */
+		$microsoft_translate = OP()->Unit('microsoft_translate');
+		$json = $microsoft_translate->Fetch($strings, $to_lang, $from_lang);
+		$json = json_decode($json, true);
+		$results = [];
+		foreach( $json as $result ){
+			$results[] = $result['translations'][0]['text'];
+		}
+		return $results;
+	}
 }
