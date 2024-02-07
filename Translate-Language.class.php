@@ -72,6 +72,7 @@ class Language implements IF_UNIT
 
     /** Fetch the Languages list.
      *
+     * @deprecated 2024-01-30
      * @created    2023-03-26
      * @return     array
      */
