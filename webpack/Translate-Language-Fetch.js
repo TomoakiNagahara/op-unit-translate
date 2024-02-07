@@ -27,31 +27,44 @@ if( typeof $OP.Translate.Language === 'undefined' ){
 //	...
 if( typeof $OP.Translate.Language.Fetch === 'undefined' ){
 	//	...
-	$OP.Translate.Language.Fetch = async function(url){
+	$OP.Translate.Language.Fetch = async function(){
 		//	...
+		const local_strage_key_name = '<?= substr( md5(__FILE__.__LINE__), 0, 10) ?>';
+
+		//	...
+		const save_item = localStorage.getItem(local_strage_key_name);
+		if( save_item ){
+			return JSON.parse(save_item)['result'];
+		}
+
+		//	...
+		const url      = "<?= OP()->Config('translate')['url_language_list'] ?>";
 		console.log(`Fetch: ${url}`);
 
 		//	...
 		const response = await fetch(url);
-		console.log(response);
-		//	...
 		const json     = await response.json();
 		console.log(json);
+
 		//	...
 		if(!json['status'] ){
-			console.error('status is not true', json);
+			console.error('"status" is not true', json);
 			return;
 		}
 		//	...
 		if( json['errors'] ){
-			console.error('has errors', json);
+			console.error('Have errors', json['errors']);
 			return;
 		}
 		//	...
 		if(!json['result'] ){
-			console.error('result is empty', json);
+			console.error('"result" is empty', json);
 			return;
 		}
+
+		//	...
+		localStorage.setItem(local_strage_key_name, JSON.stringify(json));
+
 		//	...
 		return json['result'];
 	};
