@@ -33,13 +33,14 @@ if( typeof $OP.Translate.Language.Display === 'undefined' ){
 		//	...
 		for(const[lang_code, values] of Object.entries(languages)) {
 			const dir         = values['dir'];  // Text direction. For example, Arabic.
-			const name        = values['name']; // English name.
+			const lang_name   = values['name']; // English name.
 			const native_name = values['nativeName'];
 			//	...
 			let element = document.createElement('li');
-				element.dir          = dir;
-				element.dataset.lang = lang_code;
-				element.innerText    = native_name;
+				element.dir               = dir;
+				element.dataset.lang      = lang_code;
+				element.dataset.lang_name = lang_name;
+				element.innerText         = native_name;
 			target.appendChild(element);
 		}
 	};
