@@ -42,6 +42,11 @@ class Translate implements IF_UNIT
 
     /** Return single instantiated Language object.
      *
+     * <pre>
+     * // Get language list.
+     * $language_list = OP()->Translate()->Language()->List();
+     * </pre>
+     *
      * @return \OP\UNIT\Translate\Language
      */
     static function Language()
