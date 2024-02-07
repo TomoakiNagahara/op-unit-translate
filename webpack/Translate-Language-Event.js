@@ -28,8 +28,12 @@ if( typeof $OP.Translate.Language === 'undefined' ){
 if( typeof $OP.Translate.Language.Event === 'undefined' ){
 	$OP.Translate.Language.Event = function(){
 		//	...
-		const local_strage_key_name = "<?php echo OP()->Config('translate')['language_code_selected'] ?? 'null'; ?>";
+		const language_code_selected = "<?= OP()->Config('translate')['language_code_selected'] ?>";
 		const query_selector = "#<?= OP()->Config('translate')['language_area_id'] ?> li";
+
+		//	...
+		const lang = localStorage.getItem(language_code_selected);
+		console.log('Current selected language code:', language_code_selected, lang);
 
 		//	...
 		document.querySelectorAll(query_selector).forEach(function(node){
@@ -40,10 +44,8 @@ if( typeof $OP.Translate.Language.Event === 'undefined' ){
 				let lang   = target.dataset.lang;
 
 				//	Save selected language code to local strage. 
-				localStorage.setItem(local_strage_key_name, lang);
-
-				//	...
-				location.reload();
+				localStorage.setItem(language_code_selected, lang);
+				console.log(language_code_selected, lang);
 			});
 		});
 	};
