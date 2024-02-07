@@ -52,8 +52,13 @@ class Language implements IF_UNIT
         //  ...
         $ci = ( OP()->AppID() === 'CI' );
 
+        /*
         //  ...
         $json = self::Fetch();
+        */
+        /* @var $microsoft_translate \OP\UNIT\Microsoft_Translate */
+        $microsoft_translate = OP()->Unit('Microsoft_Translate');
+        $json = $microsoft_translate->LanguageList();
 
         //  ...
         switch($type){
